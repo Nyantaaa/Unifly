@@ -1,0 +1,57 @@
+# Fix for Apache AUTHORIZATION http header as it is stripped by default for security and should be
+# enabled explicity when needed
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+Options -Indexes
+
+RewriteEngine On    # Turn on the rewriting engine
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Authentication
+RewriteRule    ^api/v1/sessions/([0-9]+)$             api/v1/sessions.php?id=$1             [L]
+RewriteRule    ^api/v1/sessions$                      api/v1/sessions.php                   [L]
+
+# Airlines
+RewriteRule    ^api/v1/airlines$                      api/v1/airlines.php                   [L]
+RewriteRule    ^api/v1/airlines/([0-9]+)$             api/v1/airlines.php?id=$1             [L]
+RewriteRule    ^api/v1/airlines/name/(.*)$            api/v1/airlines.php?name=$1           [L]
+RewriteRule    ^api/v1/airlines/code/(.*)$            api/v1/airlines.php?code=$1           [L]
+RewriteRule    ^api/v1/airlines/page/([0-9]+)$        api/v1/airlines.php?page=$1           [L]
+RewriteRule    ^api/v1/airlines/pageSize/([0-9]+)$    api/v1/airlines.php?pageSize=$1       [L]
+
+# Bookings
+RewriteRule    ^api/v1/bookings$                      api/v1/bookings.php                   [L]
+RewriteRule    ^api/v1/bookings/([0-9]+)$             api/v1/bookings.php?id=$1             [L]
+RewriteRule    ^api/v1/bookings/fullname/(.*)$        api/v1/bookings.php?fullname=$1       [L]
+RewriteRule    ^api/v1/bookings/seat/(.*)$            api/v1/bookings.php?seat=$1           [L]
+RewriteRule    ^api/v1/bookings/page/([0-9]+)$        api/v1/bookings.php?page=$1           [L]
+RewriteRule    ^api/v1/bookings/pageSize/([0-9]+)$    api/v1/bookings.php?pageSize=$1       [L]
+
+# Flights
+RewriteRule    ^api/v1/flights$                       api/v1/flights.php                    [L]
+RewriteRule    ^api/v1/flights/([0-9]+)$              api/v1/flights.php?id=$1              [L]
+RewriteRule    ^api/v1/flights/origin/(.*)$           api/v1/flights.php?origin=$1          [L]
+RewriteRule    ^api/v1/flights/destination/(.*)$      api/v1/flights.php?destination=$1     [L]
+RewriteRule    ^api/v1/flights/page/([0-9]+)$         api/v1/flights.php?page=$1            [L]
+RewriteRule    ^api/v1/flights/pageSize/([0-9]+)$     api/v1/flights.php?pageSize=$1        [L]
+
+# Seats
+RewriteRule    ^api/v1/seats$                         api/v1/seats.php                      [L]
+RewriteRule    ^api/v1/seats/([0-9]+)$                api/v1/seats.php?id=$1                [L]
+RewriteRule    ^api/v1/seats/seat/(.*)$               api/v1/seats.php?seat=$1              [L]
+RewriteRule    ^api/v1/seats/available/(.*)$          api/v1/seats.php?available=$1         [L]
+RewriteRule    ^api/v1/seats/page/([0-9]+)$           api/v1/seats.php?page=$1              [L]
+RewriteRule    ^api/v1/seats/pageSize/([0-9]+)$       api/v1/seats.php?pageSize=$1          [L]
+
+# Users
+RewriteRule    ^api/v1/users$                         api/v1/users.php                      [L]
+RewriteRule    ^api/v1/users/([0-9]+)$                api/v1/users.php?id=$1                [L]
+RewriteRule    ^api/v1/users/username/(.*)$           api/v1/users.php?username=$1          [L]
+RewriteRule    ^api/v1/users/fullname/(.*)$           api/v1/users.php?fullname=$1          [L]
+RewriteRule    ^api/v1/users/page/([0-9]+)$           api/v1/users.php?page=$1              [L]
+RewriteRule    ^api/v1/users/pageSize/([0-9]+)$       api/v1/users.php?pageSize=$1          [L]
+
+

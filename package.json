@@ -1,0 +1,27 @@
+{
+  "name": "unifly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/css/input.css -o ./public/css/unifly.css --watch",
+    "finalcss": "npx tailwindcss -o ./public/css/final.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nyantaaa/Unifly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nyantaaa/Unifly/issues"
+  },
+  "homepage": "https://github.com/Nyantaaa/Unifly#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^3.1.7",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}

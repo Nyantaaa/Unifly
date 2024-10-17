@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  .py-5\.5 {
+    padding-top: 1.375rem;
+    padding-bottom: 1.375rem;
+  }
+
+  .mb-0\.75 {
+    margin-bottom: 0.1875rem;
+  }
+
+  .z-100 {
+    z-index: 100;
+  }
+
+  .z-90 {
+    z-index: 90;
+  }
+
+  .z-80 {
+    z-index: 80;
+  }
+
+  .z-70 {
+    z-index: 70;
+  }
+
+  .z-60 {
+    z-index: 60;
+  }
+
+  .border-1\.4 {
+    border-width: 1.4px !important;
+  }
+}
+
+@layer components {
+  /* Logout Button */
+  .logout-button {
+    position: relative;
+    border: 1px solid rgb(14 165 233);
+    color: rgb(14 165 233);
+    padding: 12px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-family: sans-serif;
+    z-index: 1;
+    transition: all 0.5s;
+  }
+
+  .logout-button:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgb(14 165 233);
+    transition: all 0.5s;
+    z-index: -1;
+  }
+
+  .logout-button:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -2;
+  }
+
+  .logout-button:hover {
+    color: white;
+  }
+
+  .logout-button:hover:before {
+    width: 100%;
+  }
+  /* Logout Button Selesai */
+
+  /* Mobile Logout Button */
+  .mobile-logout-button {
+    color: rgb(14 165 233);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  @keyframes fadeBackground {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeLoading {
+    0% {
+      opacity: 1;
+    }
+
+    75% {
+      opacity: 0;
+    }
+  }
+
+  .active-loading-bg {
+    opacity: 0;
+    animation: fadeBackground 1s ease-in-out;
+  }
+
+  .active-loading {
+    opacity: 0;
+    animation: fadeLoading 1s ease-in-out;
+  }
+}
+
+@layer utilities {
+  @media (min-width: 375px) {
+    #usersMobile {
+      padding-right: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    #usersMobileMenuForm {
+      padding-right: 1rem;
+      padding-left: 0.5rem;
+    }
+    #bookingsMobileMenuForm {
+      padding-right: 0.65rem;
+      padding-left: 0.5rem;
+    }
+  }
+
+  @media (min-width: 1430px) {
+    #usersFormLeft {
+      @apply mr-7;
+      @apply ml-auto;
+    }
+
+    #usersFormRight {
+      @apply ml-7;
+      @apply mr-auto;
+    }
+    #flightsFormLeft {
+      margin-right: 1.75rem;
+      margin-left: auto;
+    }
+
+    #flightsFormRight {
+      margin-left: 1.75rem;
+      margin-right: auto;
+    }
+  }
+  #usersFormSend {
+    width: 100%;
+  }
+  #flightsFormSend {
+    width: 100%;
+  }
+}
